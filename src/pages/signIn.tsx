@@ -2,20 +2,23 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { twMerge } from "tailwind-merge";
 
-import { SignInDataScheme, SignInDataType } from "../schemes/SignInSheme";
+import { SignInDataScheme, SignInRequestType } from "../schemes/SignInSheme";
 import { Link } from "react-router-dom";
 import { SocialMedia } from "../components/basics/SocialMedia";
+import { useAuth } from "../contexts/auth/authContext";
 
 export default function SignIn() {
 
-  const { register, handleSubmit, formState: { errors }} = useForm<SignInDataType>({
+  const { hendleSignIn } = useAuth();
+
+  const { register, handleSubmit, formState: { errors }} = useForm<SignInRequestType>({
     mode: "all",
     criteriaMode: "all",
     resolver: zodResolver(SignInDataScheme)
   });
 
-  const handleFormSubmit = async (data: SignInDataType)=> {
-    console.log(data);
+  const handleFormSubmit = async (data: SignInRequestType)=> {
+    hendleSignIn(data);
   }
 
   return (
@@ -119,7 +122,7 @@ export default function SignIn() {
                     </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <SocialMedia.Root href="#" text="facebook">
+                  <SocialMedia.Root href="#" text="facebook" className="hover:bg-[#1778f2] hover:border-[#1778f2]">
                     <SocialMedia.Icon.Facebook />
                   </SocialMedia.Root>
 

@@ -6,4 +6,4 @@ export const SignInDataScheme = z.object({
     password: z.string().min(6, "A sua senha deve conter no minimo 6 cracteres"),
 });
 
-export type SignInDataType = z.infer<typeof SignInDataScheme>;
+export type SignInRequestType = z.infer<typeof SignInDataScheme>;
