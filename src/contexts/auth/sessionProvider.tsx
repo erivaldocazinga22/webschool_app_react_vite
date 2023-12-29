@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { UserResponseType, useAuth } from "./authContext";
 import { api } from "../../services/axios.config";
+import Loader from "../../components/basics/Loader";
 
 export default function SessionProvider({ children }: { children : ReactNode}) {
     const { user, handleDefineUser, handleDefineError } = useAuth();
@@ -25,26 +26,23 @@ export default function SessionProvider({ children }: { children : ReactNode}) {
     }
     
     useEffect(()=> {
-        handleAuthorization()
+        handleAuthorization();
     },[]);
 
     if(!user) {
+
+            navigate("/auth/account", { replace: true });
         
-        setTimeout(()=> {
-            navigate("/auth/account");
-        }, 5000)
 
         return (
-            <div>
-                Loading...
+            <div className="w-screen h-screen flex items-center justify-center overflow-hidden text-zinc-900 bg-white dark:text-zinc-50 dark:bg-webschool-400 transition-colors duration-150">
+                <Loader />
             </div>
         )
     }
 
     return (
-        <div>
-            {children}
-        </div>
+        <>{children}</>
     )
 
 }
