@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, ReactNode } from "react";
 import { User2 } from "lucide-react";
+import { useAuth } from "../../../../contexts/auth/authContext";
 
 interface ProfilePopupRootProps {
   children: ReactNode;
@@ -33,6 +34,9 @@ export default function ProfilePopupRoot({ children }: ProfilePopupRootProps): J
     setProfilePopupOpen(!isProfilePopupOpen);
   };
 
+
+  const { user } = useAuth();
+
   return (
     <div className="relative">
       <div
@@ -41,7 +45,11 @@ export default function ProfilePopupRoot({ children }: ProfilePopupRootProps): J
         onClick={handleProfilePhotoClick}
         ref={profilePhotoRef}
       >
-        <User2 strokeWidth={1.5} />
+        {user?.avatar_url ? (
+            <img src={user?.avatar_url} alt={`profile photo of ${user.nome}`} />
+        ): (
+            <User2 size={30} strokeWidth={1.5} />
+        )}
       </div>
       {isProfilePopupOpen && <div ref={profilePopupRef}>{children}</div>}
     </div>

@@ -9,7 +9,7 @@ export default function Dashboard() {
   const updateToast = () => toast.success("toastId.current");
   
   return (
-    <div className="w-screen h-screen flex overflow-hidden text-zinc-900 bg-white dark:text-zinc-50 dark:bg-webschool-400 transition-colors duration-150">
+    <div className="w-full h-full flex overflow-hidden text-zinc-900 bg-white dark:text-zinc-50 dark:bg-webschool-400 transition-colors duration-150">
         <h1>Dashboard</h1>
 
         <span>Name: {user?.nome}</span>
