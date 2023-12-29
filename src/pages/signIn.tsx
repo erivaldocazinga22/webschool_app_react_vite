@@ -1,15 +1,15 @@
-import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Link, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import { twMerge } from "tailwind-merge";
+import { setCookie } from "nookies";
 
 import { SignInDataScheme, SignInRequestType } from "../schemes/SignInSheme";
-import { Link } from "react-router-dom";
 import { SocialMedia } from "../components/basics/SocialMedia";
-import { useAuth } from "../contexts/auth/authContext";
+import { api } from "../services/axios.config";
 
 export default function SignIn() {
-
-  const { hendleSignIn } = useAuth();
+  const navigate = useNavigate();
 
   const { register, handleSubmit, formState: { errors }} = useForm<SignInRequestType>({
     mode: "all",
@@ -18,7 +18,17 @@ export default function SignIn() {
   });
 
   const handleFormSubmit = async (data: SignInRequestType)=> {
-    hendleSignIn(data);
+    const response = await api.post("/account", { email: data.email, password: data.password});
+    const { token } = response.data;
+    
+    setCookie(undefined, "webschool.token", token, {
+      path: "/",
+      maxAge:  60 * 60 * 24 * 7, // 7 days
+      sameSite: "strict",
+      secure: true
+    });
+
+    navigate("/");
   }
 
   return (

@@ -1,5 +1,4 @@
 import { createContext, useContext } from "react";
-import { SignInRequestType } from "../../schemes/SignInSheme";
 
 export type UserResponseType = {
     "id": number,
@@ -15,10 +14,12 @@ export type UserResponseType = {
     "updated_at": Date
 }
 
+
 type AuthContextProps = {
     user: UserResponseType | null
     error: string | null
-    hendleSignIn: (data: SignInRequestType)=> Promise<void>
+    handleDefineUser: (data: UserResponseType)=> void
+    handleDefineError: (error: string)=> void
 }
 
 export const AuthContext = createContext({} as AuthContextProps);
