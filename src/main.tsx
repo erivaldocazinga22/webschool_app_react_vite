@@ -1,29 +1,35 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./styles/global.css";
+
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import App from "./pages/App.tsx";
-import Error404 from "./pages/404.tsx";
-import SignIn from "./pages/signIn.tsx";
-import Dashboard from "./pages/dashboard.tsx";
-import AuthProvider from "./contexts/auth/authProvider.tsx";
+import { createBrowserRouter, RouterProvider} from "react-router-dom";
+import RootLayout from "./Pages/private/Layout.tsx";
+import Login from "./Pages/Login.tsx";
+import NotFound404 from "./Pages/404.tsx";
+import Dashboard from "./Pages/private/Dashboard.tsx";
+import Layout from "./Pages/Layout.tsx";
+
 
 export const Routers = createBrowserRouter([
   {
-    errorElement:  <Error404 />,
+    element: <Layout />,
+    errorElement: <NotFound404 />,
     children: [
       {
-        path: "/auth/account",
-        element:  <SignIn />
+        path: "/login",
+        element: <Login />
       }
     ]
   },
   {
-    element: <App />,
-    errorElement:  <Error404 />,
+    path: "*",
+    element: <NotFound404 />
+  },
+  {
+    element: <RootLayout />,
     children: [
       {
         path: "/",
@@ -33,13 +39,12 @@ export const Routers = createBrowserRouter([
   }
 ]);
 
-
-
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <AuthProvider>
-      <RouterProvider router={Routers} />
-      <ToastContainer />
-    </AuthProvider>
-  </React.StrictMode>
+    <RouterProvider router={Routers} />
+    <ToastContainer 
+      theme="dark"
+      autoClose={1000}
+    />
+  </React.StrictMode>,
 )
