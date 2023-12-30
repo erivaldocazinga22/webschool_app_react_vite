@@ -1,3 +1,6 @@
+import ToggleDarkMode from "../../basics/toggleDarkmode";
+import ProfilePopup from "./ProfilePopup";
+
 export default function Header() {
     return (
         <header className="w-full flex-1 h-basic px-6 flex items-center justify-between">
@@ -6,11 +9,11 @@ export default function Header() {
             </div>
             
             <div className="flex items-center gap-2">
-                {/* <ToggleDarkMode /> */}
+                <ToggleDarkMode />
             
-                {/* <ProfilePopup.Root>
+                <ProfilePopup.Root>
                     <ProfilePopup.Popup/>
-                </ProfilePopup.Root> */}
+                </ProfilePopup.Root>
             </div>
         </header>
     )
