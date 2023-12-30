@@ -27,7 +27,7 @@ export default function Layout() {
         {/* Notificações!! */}
         <ToastContainer 
           theme={mode}
-          autoClose={1000}
+          autoClose={2000}
         />
       </div>
     )

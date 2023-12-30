@@ -7,9 +7,11 @@ import { useState } from "react";
 import { FormDataLogin, LoginShema } from "../Shemas/LoginShema";
 import { api } from "../axios.config";
 import Loader from "../Components/basics/Loader";
+import { useTheme } from "../Contexts/Theme/themeContext";
 
 export default function Login() {
     const navigate = useNavigate();
+    const { mode } = useTheme();
     const [loading, setLoading] = useState<boolean>(false);
     
 
@@ -33,7 +35,10 @@ export default function Login() {
             
         } catch (error) {
             toast.error("Falha no login",{ 
-                pauseOnHover: false
+                pauseOnHover: false,
+                style: {
+                    background: mode === "dark" ? "#181818" : "rgb(228 228 231)" 
+                }
             })
          } finally {
             setLoading(false);

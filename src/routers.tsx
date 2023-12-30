@@ -11,8 +11,7 @@ import Users from "./Pages/private/Users.tsx";
 import Publication from "./Pages/private/Publication.tsx";
 import Vitrine from "./Pages/private/Vitrine.tsx";
 
-import MessageLayout from "./Pages/private/message/Layout.tsx";
-import Message from "./Pages/private/message/index.tsx";
+import Message from "./Pages/private/message.tsx";
 
 export const Routers = createBrowserRouter([
     { path: "*", element: <NotFound404 /> },
@@ -21,14 +20,14 @@ export const Routers = createBrowserRouter([
         { path: "/refrash", element: <RefrashPassword />}
       ]
     },
-    { element: <RootLayout />, children: [
+    { element: <RootLayout layout="default" />, children: [
         { path: "/", element: <Dashboard /> },
         { path: "/users", element: <Users /> },
         { path: "/publication", element: <Publication /> },
         { path: "/vitrine", element: <Vitrine /> },
       ]
     },
-    { element: <MessageLayout />, children: [
+    { element: <RootLayout layout="messages" />, children: [
         { path: "/messages", element: <Message /> }
       ]
     },
