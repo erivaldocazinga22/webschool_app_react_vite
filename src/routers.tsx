@@ -11,7 +11,8 @@ import Users from "./Pages/private/Users.tsx";
 import Publication from "./Pages/private/Publication.tsx";
 import Vitrine from "./Pages/private/Vitrine.tsx";
 
-import Message from "./Pages/private/message.tsx";
+import Message from "./Pages/private/message";
+import MessageLayout from "./Pages/private/message/Layout.tsx";
 
 export const Routers = createBrowserRouter([
     { path: "*", element: <NotFound404 /> },
@@ -27,7 +28,7 @@ export const Routers = createBrowserRouter([
         { path: "/vitrine", element: <Vitrine /> },
       ]
     },
-    { element: <RootLayout layout="messages" />, children: [
+    { element: <MessageLayout />, children: [
         { path: "/messages", element: <Message /> }
       ]
     },

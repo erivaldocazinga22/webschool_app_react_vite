@@ -8,6 +8,7 @@ import { FormDataLogin, LoginShema } from "../Shemas/LoginShema";
 import { api } from "../axios.config";
 import Loader from "../Components/basics/Loader";
 import { useTheme } from "../Contexts/Theme/themeContext";
+import { setCookie } from "nookies";
 
 export default function Login() {
     const navigate = useNavigate();
@@ -27,11 +28,21 @@ export default function Login() {
             setLoading(true);
             const response = await api.post("/account", { email: data.email, password: data.password});
 
+            setCookie(undefined, "webschool.token", response.data.token, {
+                maxAge: 60 * 60 * 24 * 7, //7 days
+                path: "/",
+                sameSite: "strict",
+                secure: true
+            });
+        
+
             navigate("/", { replace: true });
             
             toast.success(response.data.message, {
                 pauseOnHover: false
             });
+
+
             
         } catch (error) {
             toast.error("Falha no login",{ 

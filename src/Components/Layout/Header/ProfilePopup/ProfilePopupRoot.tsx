@@ -1,12 +1,14 @@
 import { useState, useRef, useEffect, ReactNode } from "react";
 import { User2 } from "lucide-react";
-import { user } from "./data.fake";
+import { useSession } from "../../../../Contexts/Session/sessionContext";
 
 interface ProfilePopupRootProps {
   children: ReactNode;
 }
 
 export default function ProfilePopupRoot({ children }: ProfilePopupRootProps): JSX.Element {
+  const { user } = useSession();
+
   const [isProfilePopupOpen, setProfilePopupOpen] = useState(false);
   const profilePhotoRef = useRef<HTMLDivElement>(null);
   const profilePopupRef = useRef<HTMLDivElement>(null);

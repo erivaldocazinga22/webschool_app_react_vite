@@ -17,12 +17,12 @@ export default function NavBarElement(props: NavBarElementProps) {
     const { icon: Icon } = props;
 
     return (
-        <Link to={props.href}>
+        <Link to={props.href} replace>
             <div
                 ref={props.ref}
                 onClick={()=> props.alternarVisibilidade(props.index)}
                 className={twMerge(`relative w-12 h-12 rounded-2xl flex items-center justify-center cursor-pointer hover:bg-zinc-300/50 dark:hover:bg-webschool-200 transition-colors duration-150 group`, 
-                    `${props.aberto && "bg-webschool-first hover:bg-webschool-first dark:hover:bg-webschool-first text-white"}`
+                    `${props.aberto && "bg-webschool-first hover:bg-webschool-first dark:hover:bg-webschool-first text-white transition-colors duration-150"}`
                 )}
             >
                 <Icon strokeWidth={1.5} />

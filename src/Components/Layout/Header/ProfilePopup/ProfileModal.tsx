@@ -1,8 +1,10 @@
 import { User2, LogOut } from "lucide-react";
 import { Link } from "react-router-dom";
 
-import { user } from "./data.fake";
+import { useSession } from "../../../../Contexts/Session/sessionContext";
 export default function ProfileModal() {
+
+    const { user } = useSession();
 
     return (
         <div className="z-40 absolute top-16 right-0 w-[200px] rounded-md overflow-hidden shadow dark:drop-shadow-md dark:shadow-webschool-300">
