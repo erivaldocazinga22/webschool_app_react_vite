@@ -1,36 +1,24 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { LayoutGrid, MessageCircle, PieChart, PlusSquare, Settings, User2 } from "lucide-react";
 import Modal from "../../basics/Modal";
 import NavBar from "./NavBar";
 import { useEffect, useState } from "react";
 export default function Sidebar() {
     const location = useLocation();
-    const navigate = useNavigate();
 
     const [active, setActive] = useState<number>(0);
 
     useEffect(() => {
         const path = location.pathname;
-        const pathToIndex = {
-            "/": 0,
-            "/users": 1,
-            "/publication": 2,
-            "/messages": 3,
-            "/vitrine": 4,
-        };
-        setActive(pathToIndex[path] || 0);
+        if (path === "/") setActive(0);
+        if (path === "/users") setActive(1);
+        if (path === "/publication") setActive(2);
+        if (path === "/messages") setActive(3);
+        if (path === "/vitrine") setActive(4);
     }, [location.pathname]);
 
     const handleIsSidebarOpen = (index: number) => {
         setActive(index);
-        const indexToPath = {
-            0: "/",
-            1: "/users",
-            2: "/publication",
-            3: "/messages",
-            4: "/vitrine",
-        };
-        navigate(indexToPath[index]);
     };
 
     return (
