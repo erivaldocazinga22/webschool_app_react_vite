@@ -12,23 +12,28 @@ import Publication from "./Pages/private/Publication.tsx";
 import Vitrine from "./Pages/private/Vitrine.tsx";
 
 import Message from "./Pages/private/message";
-import MessageLayout from "./Pages/private/message/Layout.tsx";
 
 export const Routers = createBrowserRouter([
-    { path: "*", element: <NotFound404 /> },
-    { element: <Layout />, children: [
+    { 
+      element: <Layout />, 
+      errorElement:  <NotFound404 />,
+      children: [
         { path: "/login", element: <Login /> },
         { path: "/refrash", element: <RefrashPassword />}
       ]
     },
-    { element: <RootLayout layout="default" />, children: [
+    { 
+      element: <RootLayout layout="default" />,
+      errorElement:  <NotFound404 />,
+      children: [
         { path: "/", element: <Dashboard /> },
         { path: "/users", element: <Users /> },
         { path: "/publication", element: <Publication /> },
         { path: "/vitrine", element: <Vitrine /> },
       ]
     },
-    { element: <MessageLayout />, children: [
+    { element: <RootLayout layout="messages" />, 
+    children: [
         { path: "/messages", element: <Message /> }
       ]
     },

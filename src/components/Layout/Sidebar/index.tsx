@@ -6,20 +6,11 @@ import { useEffect, useState } from "react";
 export default function Sidebar() {
     const location = useLocation();
 
-    const [active, setActive] = useState<number>(0);
+    const [active, setActive] = useState<string>("");
 
     useEffect(() => {
-        const path = location.pathname;
-        if (path === "/") setActive(0);
-        if (path === "/users") setActive(1);
-        if (path === "/publication") setActive(2);
-        if (path === "/messages") setActive(3);
-        if (path === "/vitrine") setActive(4);
+        setActive(location.pathname);
     }, [location.pathname]);
-
-    const handleIsSidebarOpen = (index: number) => {
-        setActive(index);
-    };
 
     return (
         <aside className="w-basic min-w-basic h-screen py-2 flex flex-col items-center justify-between bg-webschool-100/15 text-webschool-100 dark:bg-webschool-300 transition-colors duration-150"> 
@@ -30,34 +21,24 @@ export default function Sidebar() {
             </Link>
 
             <NavBar.Root>
-                <NavBar.Element 
-                    index={0} 
-                    aberto={active === 0}
-                    alternarVisibilidade={handleIsSidebarOpen}
+                <NavBar.Element  
+                    active={active}
                     text="Dashboard" icon={PieChart} href="/" 
                 />
-                <NavBar.Element 
-                    index={1} 
-                    aberto={active === 1}
-                    alternarVisibilidade={handleIsSidebarOpen}
+                <NavBar.Element  
+                    active={active}
                     text="Usuários" icon={User2} href="/users" 
                 />
-                <NavBar.Element 
-                    index={2} 
-                    aberto={active === 2}
-                    alternarVisibilidade={handleIsSidebarOpen}
+                <NavBar.Element  
+                    active={active}
                     text="Publicações" icon={PlusSquare} href="/publication" 
                 />
-                <NavBar.Element 
-                    index={3} 
-                    aberto={active === 3}
-                    alternarVisibilidade={handleIsSidebarOpen}
+                <NavBar.Element  
+                    active={active}
                     text="Mensagens" icon={MessageCircle} href="/messages" 
                 />
-                <NavBar.Element 
-                    index={4} 
-                    aberto={active === 4}
-                    alternarVisibilidade={handleIsSidebarOpen}
+                <NavBar.Element  
+                    active={active}
                     text="Vitrine" icon={LayoutGrid} href="/vitrine" 
                 />
             </NavBar.Root>

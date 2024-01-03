@@ -26,7 +26,7 @@ export default function Login() {
     async function handleLogin(data: FormDataLogin) {
         try {
             setLoading(true);
-            const response = await api.post("/account", { email: data.email, password: data.password});
+            const response = await api.post("/register", { email: data.email, password: data.password});
 
             setCookie(undefined, "webschool.token", response.data.token, {
                 maxAge: 60 * 60 * 24 * 7, //7 days
