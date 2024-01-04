@@ -125,8 +125,11 @@ export default function Login() {
 
                     <div>
                         <button
+                            disabled={loading}
                             type="submit"
-                            className="flex w-full justify-center rounded-md font-normal bg-webschool-first px-3 py-1.5 text-sm leading-6 text-white shadow-sm hover:bg-webschool-first/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-webg-webschool-first"
+                            className={`flex w-full justify-center rounded-md font-normal bg-webschool-first px-3 py-1.5 text-sm leading-6 text-white shadow-sm hover:bg-webschool-first/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-webg-webschool-first
+                                ${loading && "cursor-not-allowed"}
+                            `}
                         >
                             {loading ? (
                                 <Loader /> 

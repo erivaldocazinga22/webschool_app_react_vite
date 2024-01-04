@@ -1,5 +1,6 @@
 import { Plus } from "lucide-react";
 import HeaderRouter from "../../Components/basics/HeaderRouter";
+import Modal from "../../Components/basics/Modal";
 
 export default function Publication() {
     return (
@@ -8,9 +9,13 @@ export default function Publication() {
                 <HeaderRouter labelRoot="Dashboard" label="Publicações"/>
             </div>
 
-            <div className="absolute w-12 h-12 bottom-4 right-4 cursor-pointer flex items-center justify-center rounded-full bg-webschool-first">
-                <Plus />
-            </div>
+            <Modal element={
+                <div className="absolute w-12 h-12 bottom-4 right-4 cursor-pointer flex items-center justify-center rounded-full text-white bg-webschool-first">
+                    <Plus />
+                </div>
+            }>
+                Criar Publicação
+            </Modal>
         </div>
     )
 }

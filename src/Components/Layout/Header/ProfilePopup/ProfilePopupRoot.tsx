@@ -32,9 +32,7 @@ export default function ProfilePopupRoot({ children }: ProfilePopupRootProps): J
     };
   }, [profilePhotoRef, profilePopupRef]);
 
-  const handleProfilePhotoClick = () => {
-    setProfilePopupOpen(!isProfilePopupOpen);
-  };
+
 
 
   return (
@@ -42,7 +40,7 @@ export default function ProfilePopupRoot({ children }: ProfilePopupRootProps): J
       <div
         id="profilephoto"
         className="relative w-12 h-12 cursor-pointer text-webschool-100 rounded-2xl overflow-hidden bg-zinc-300/80 dark:bg-webschool-200 flex items-center justify-center transition-colors duration-150"
-        onClick={handleProfilePhotoClick}
+        onClick={() => setProfilePopupOpen(!isProfilePopupOpen)}
         ref={profilePhotoRef}
       >
         {user?.avatar_url ? (
