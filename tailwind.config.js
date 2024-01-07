@@ -31,6 +31,13 @@ export default {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    // eslint-disable-next-line no-undef
+    require("tailwindcss"),
+    // eslint-disable-next-line no-undef
+    require("autoprefixer"),
+    // eslint-disable-next-line no-undef
+    require("tailwind-scrollbar")
+  ],
 }
 

@@ -7,15 +7,12 @@ export default function Sidebar() {
     const location = useLocation();
 
     const [active, setActive] = useState<string>("");
-
-    useEffect(() => {
-        setActive(location.pathname);
-    }, [location.pathname]);
+    useEffect(() => setActive(location.pathname), [location.pathname]);
 
     return (
-        <aside className="w-basic min-w-basic h-screen py-2 flex flex-col items-center justify-between bg-webschool-100/15 text-webschool-100 dark:bg-webschool-300 transition-colors duration-150"> 
+        <aside className="w-basic min-w-basic h-screen py-2 flex flex-col items-center justify-between border-r border-zinc-200 dark:border-webschool-300 text-webschool-100 dark:bg-webschool-300 transition-colors duration-150"> 
             <Link to="/">
-                <div className={`w-14 h-14 relative`}>
+                <div className={`w-14 h-14 relative flex items-center justify-center`}>
                     <img src="/logomarca.svg"  alt="logomarca webschool" className="w-12 h-12" />
                 </div>
             </Link>
@@ -44,8 +41,8 @@ export default function Sidebar() {
             </NavBar.Root>
 
             <Modal element={
-                <div className="w-12 h-12 rounded-2xl flex items-center justify-center cursor-pointer bg-zinc-300/50  dark:bg-webschool-200 transition-colors duration-150">
-                    <Settings />
+                <div className="w-12 h-12 rounded-2xl flex items-center justify-center cursor-pointer bg-zinc-300/70  dark:bg-webschool-200 transition-colors duration-150">
+                    <Settings strokeWidth={1.5} />
                 </div>
             }>
                 Definições

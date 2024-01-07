@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { FormDataLogin, LoginShema } from "../Shemas/LoginShema";
+import { FormDataLogin, LoginSchema } from "../Schemas/LoginSchema";
 import { api } from "../axios.config";
 import Loader from "../Components/basics/Loader";
 import { useTheme } from "../Contexts/Theme/themeContext";
@@ -19,7 +19,7 @@ export default function Login() {
     const { register, handleSubmit, formState: { errors } } = useForm<FormDataLogin>({
         mode: "all",
         criteriaMode: "all",
-        resolver: zodResolver(LoginShema)
+        resolver: zodResolver(LoginSchema)
     });
 
 

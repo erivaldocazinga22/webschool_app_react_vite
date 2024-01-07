@@ -18,7 +18,7 @@ export default function NavBarElement(props: NavBarElementProps) {
         <Link to={props.href} replace>
             <div
                 ref={props.ref}
-                className={twMerge(`relative w-12 h-12 rounded-2xl flex items-center justify-center cursor-pointer hover:bg-zinc-300/50 dark:hover:bg-webschool-200 transition-colors duration-150 group`, 
+                className={twMerge(`relative w-12 h-12 rounded-2xl flex items-center justify-center cursor-pointer hover:bg-zinc-300/70 dark:hover:bg-webschool-200 transition-colors duration-150 group`, 
                     `${props.active === props.href && "bg-webschool-first hover:bg-webschool-first dark:hover:bg-webschool-first text-white transition-colors duration-150"}`
                 )}
             >
